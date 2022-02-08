@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get('/', 'HomeController@getHome');
+
+Route::get('catalog', 'CatalogController@getIndex');
+
+Route::get('catalog/show/{id}', 'CatalogController@getShow');
+
+Route::get('catalog/create', 'CatalogController@getCreate');
+
+Route::get('catalog/edit/{id}', 'CatalogController@getEdit');
+
+
+/*
 Route::get('/', function () {
     return view('home');
 });
@@ -39,4 +53,4 @@ Route::get('catalog/edit/{id}', function ($id) {
 
 Route::post('logout', function () {
     return "Saliendo de la sesión";
-});
+}); */

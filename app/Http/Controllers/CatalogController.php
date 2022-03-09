@@ -10,6 +10,11 @@ use App\Models\Movie;
 class CatalogController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function getIndex()
     {
         $pelis= Movie::all();
@@ -35,4 +40,51 @@ class CatalogController extends Controller
 /*
         return view('catalog.edit', ['arrayPeliculas' => $this->arrayPeliculas[$id]]); */
     }
+
+    public function postCreate(Request $request){
+
+        /* $request->validate([
+            'title' => 'required|string|max:255',
+            'year' => 'required|string|max:8',
+            'director' => 'required|string|max:64',
+            'poster' => 'required|string|max:255',
+            'synopsis' => 'required|string',
+        ]);
+ */
+        $pelicula= new Movie;
+        $pelicula->title=$request->title;
+        $pelicula->year=$request->year;
+        $pelicula->director=$request->director;
+        $pelicula->poster=$request->poster;
+        $pelicula->synopsis=$request->synopsis;
+
+
+        $pelicula->save();
+        return redirect('catalog');
+       // return redirect()->action('CatalogController@getIndex');
+
+    }
+    public function putEdit(Request $request,$id){
+
+        //$pelicula=new Movie();
+         /* $request->validate([
+             'title' => 'required|string|max:255',
+             'year' => 'required|string|max:8',
+             'director' => 'required|string|max:64',
+             'poster' => 'required|string|max:255',
+             'synopsis' => 'required|string',
+         ]); */
+         $pelicula= Movie::findOrFail($id);
+
+         $pelicula->title=$request->title;
+         $pelicula->year=$request->year;
+         $pelicula->director=$request->director;
+         $pelicula->poster=$request->poster;
+         $pelicula->synopsis=$request->synopsis;
+
+         $pelicula->save();
+         return redirect('/catalog/show/'.$id);
+
+    }
+
 }

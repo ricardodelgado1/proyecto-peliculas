@@ -18,6 +18,8 @@ class CatalogController extends Controller
     public function getIndex()
     {
         $pelis= Movie::all();
+
+        //connectify('success','success','Catalogo Encontrado!');
         return view('catalog.index', ['pelis'=>$pelis]);
 
        /*  return view('catalog.index', ['arrayPeliculas' => $this->arrayPeliculas]); */
@@ -31,7 +33,9 @@ class CatalogController extends Controller
     }
     public function getCreate()
     {
+
         return view('catalog.create');
+
     }
     public function getEdit($id)
     {
@@ -59,7 +63,10 @@ class CatalogController extends Controller
         $pelicula->synopsis=$request->synopsis;
 
 
-        $pelicula->save();
+        $pelicula->save();//->delete();
+
+       notify()->success('¡Pelicula Agregada!');
+        // notify()->emotify('success', '¡Pelicula Agregada!');
         return redirect('catalog');
        // return redirect()->action('CatalogController@getIndex');
 
@@ -83,8 +90,32 @@ class CatalogController extends Controller
          $pelicula->synopsis=$request->synopsis;
 
          $pelicula->save();
-         return redirect('/catalog/show/'.$id);
+         //drakify('error');
 
+        notify()->success('!Pelicula Editada!','Exito');
+         return redirect('/catalog/show/'.$id);
+    }
+
+    public function putRent(Request $request,$id){
+        $pelicula = Movie::findOrFail($request->id);
+        $pelicula->rented=true;
+        $pelicula->save();
+        notify()->success('Película Alquilada con Exito!!');
+        return redirect()->action([CatalogController::class,'getShow'],array('id'=>$id));
+    }
+    public function putReturn(Request $request,$id){
+        $pelicula = Movie::findOrFail($request->id);
+        $pelicula->rented=false;
+        $pelicula->save();
+        notify()->success('Película Devuelta con Exito!!');
+        //notify()->emotify('success', '¡Pelicula Agregada!');
+        return redirect()->action([CatalogController::class,'getShow'],array('id'=>$id));
+    }
+    public function deleteMovie(Request $request,$id){
+        $pelicula = Movie::findOrFail($request->id);
+        $pelicula->delete();
+        notify()->warning('Eliminaste una Película del catalogo!');;
+        return redirect('catalog');
     }
 
 }

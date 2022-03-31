@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CatalogController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,6 +32,10 @@ Auth::routes();
 Route::post('catalog/create', 'CatalogController@postCreate')->middleware('auth');
 Route::put('catalog/edit/{id}', 'CatalogController@putEdit');
 
+Route::put('catalog/rent/{id}',[CatalogController::class, 'putRent']);
+Route::put('catalog/return/{id}',[CatalogController::class, 'putReturn']);
+
+Route::delete('catalog/delete/{id}',[CatalogController::class,'deleteMovie']);
 
 /*
 Route::get('/', function () {

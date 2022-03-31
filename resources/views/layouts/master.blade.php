@@ -10,17 +10,29 @@
     <link href="{{ url('/assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <title>Videoclub</title>
+    @notifyCss
 </head>
 
 <body>
 
     @include('partials.navbar')
+    @include('notify::components.notify')
+    
+    <x:notify-messages />
+        @notifyJs
 
     <div class="container">
         @yield('content')
     </div>
 
     <script src="{{ url('/assets/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<!-- <script>
+
+</script>
+ -->
 
 </body>
 

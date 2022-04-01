@@ -1,19 +1,18 @@
 @extends('layouts.master')
 
 @section('content')
-VER Pelicula
+
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <div class="row">
     <div class="col-sm-4">
         {{-- TODO: Imagen de la película --}}
         <img src="{{ $pelicula->poster}}">
-        <!--
-        <img src="{{ $pelicula['poster']}}" style="height-460px"> -->
+
     </div>
     <div class="col-sm-8">
         {{-- TODO: Datos de la película --}}
-        <h2 class="text-start mt-3">{{ $pelicula->title}}</h2>
+        <h1 class="text-start fs-4">{{ $pelicula->title}}</h1s>
         <p class="text-start fs-4">Año: {{$pelicula->year}}
             <br>
             Director: {{$pelicula->director}}

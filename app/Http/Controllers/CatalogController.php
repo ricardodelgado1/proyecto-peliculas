@@ -17,6 +17,8 @@ class CatalogController extends Controller
 
     public function getIndex()
     {
+        //smilify('success', 'You are successfully reconnected');
+
         $pelis= Movie::all();
         return view('catalog.index', ['pelis'=>$pelis]);
 
@@ -36,6 +38,8 @@ class CatalogController extends Controller
     public function getEdit($id)
     {
         $pelicula= Movie::findOrFail($id);
+
+
         return view('catalog.edit', ['pelicula' => $pelicula,'id'=>$id]);
 /*
         return view('catalog.edit', ['arrayPeliculas' => $this->arrayPeliculas[$id]]); */
@@ -60,6 +64,7 @@ class CatalogController extends Controller
 
 
         $pelicula->save();
+        smilify('Exito', 'Pelicula Creada correctamente');
         return redirect('catalog');
        // return redirect()->action('CatalogController@getIndex');
 
@@ -83,6 +88,7 @@ class CatalogController extends Controller
          $pelicula->synopsis=$request->synopsis;
 
          $pelicula->save();
+         notify()->success('Pelicula editada correctamente!');
          return redirect('/catalog/show/'.$id);
 
     }

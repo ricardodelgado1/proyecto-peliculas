@@ -18,8 +18,8 @@ class CreateMoviesTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('year',8);
-            $table->string('director',8);
-            $table->string('poster');
+            $table->string('director',20);
+            $table->string('poster',255);
             $table->boolean('rented')->default(false);
             $table->text('synopsis');
             $table->timestamps();

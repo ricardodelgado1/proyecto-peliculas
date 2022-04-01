@@ -21,9 +21,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function getHome()
+    public function index()
     {
-       // return view('home');
-        return redirect()->action('CatalogController@getIndex');
+        return view('/catalog');
     }
 }

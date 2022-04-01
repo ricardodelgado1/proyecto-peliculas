@@ -26,7 +26,7 @@
     </div>
     <div class="mb-3">
         <label for="exampleInputEmail1" class="form-label">Resumen :</label>
-        <textarea class="form-control" name="synopsis" id="" rows="3">{{$pelicula->synospis}}</textarea>
+        <textarea class="form-control" name="synopsis" id="" rows="3">{{$pelicula->synopsis}}</textarea>
 
     </div>
     <button type="submit" class="btn btn-primary">Modificar Pelicula</button>

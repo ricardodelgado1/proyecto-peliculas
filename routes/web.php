@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 
-Route::get('/', 'HomeController@getHome');
+Route::get('/', 'CatalogController@getindex');
 
 Route::get('catalog', 'CatalogController@getIndex');
 
@@ -30,6 +30,8 @@ Auth::routes();
 
 Route::post('catalog/create', 'CatalogController@postCreate')->middleware('auth');
 Route::put('catalog/edit/{id}', 'CatalogController@putEdit');
+
+
 
 
 /*
@@ -61,3 +63,7 @@ Route::post('logout', function () {
     return "Saliendo de la sesión";
 }); */
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

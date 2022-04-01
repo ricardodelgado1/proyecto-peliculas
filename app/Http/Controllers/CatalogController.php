@@ -22,6 +22,8 @@ class CatalogController extends Controller
         //connectify('success','success','Catalogo Encontrado!');
         return view('catalog.index', ['pelis'=>$pelis]);
 
+        //return $pelis;
+
        /*  return view('catalog.index', ['arrayPeliculas' => $this->arrayPeliculas]); */
     }
     public function getShow($id)

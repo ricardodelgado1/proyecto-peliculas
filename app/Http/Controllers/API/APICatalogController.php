@@ -36,7 +36,7 @@ class APICatalogController extends Controller
         $pe->rented = false;
         $pe->synopsis = $request->synopsis;
         $result = $pe->save();
-        return response()->json([Movie::findOrFail($id),
+        return response()->json([
         'msg'=>'Pelicula creada Correctamente!']);
     }
 

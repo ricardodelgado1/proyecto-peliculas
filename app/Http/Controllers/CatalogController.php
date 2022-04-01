@@ -99,6 +99,7 @@ class CatalogController extends Controller
         notify()->success('Película Alquilada con Exito!!');
         return redirect()->action([CatalogController::class,'getShow'],array('id'=>$id));
     }
+
     public function putReturn(Request $request,$id){
         $pelicula = Movie::findOrFail($request->id);
         $pelicula->rented=false;
@@ -107,6 +108,7 @@ class CatalogController extends Controller
         //notify()->emotify('success', '¡Pelicula Agregada!');
         return redirect()->action([CatalogController::class,'getShow'],array('id'=>$id));
     }
+
     public function deleteMovie(Request $request,$id){
         $pelicula = Movie::findOrFail($request->id);
         $pelicula->delete();

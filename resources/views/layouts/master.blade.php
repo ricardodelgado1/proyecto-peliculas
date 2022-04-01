@@ -16,6 +16,10 @@
 <body>
 
     @include('partials.navbar')
+    @include('notify::components.notify')
+    
+    <x:notify-messages />
+        @notifyJs
 
     @include('notify::components.notify')
     <x:notify-messages/>
@@ -26,6 +30,13 @@
     </div>
 
     <script src="{{ url('/assets/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<!-- <script>
+
+</script>
+ -->
 
 </body>
 

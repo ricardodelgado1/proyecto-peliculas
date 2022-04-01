@@ -28,6 +28,4 @@ Route::get('profile', function () {
     // Zona de acceso restringido
 })->middleware('auth.basic');
 
-Route::get('/api/v1/catalog', 'APICatalogController@getindex');
 
-//Route::get('/api/v1/catalog', [App\Http\Controllers\APICatalogController::class, 'index'])->name('inicio');

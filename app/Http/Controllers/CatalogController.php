@@ -77,14 +77,6 @@ class CatalogController extends Controller
     }
     public function putEdit(Request $request,$id){
 
-        //$pelicula=new Movie();
-         /* $request->validate([
-             'title' => 'required|string|max:255',
-             'year' => 'required|string|max:8',
-             'director' => 'required|string|max:64',
-             'poster' => 'required|string|max:255',
-             'synopsis' => 'required|string',
-         ]); */
          $pelicula= Movie::findOrFail($id);
 
          $pelicula->title=$request->title;
